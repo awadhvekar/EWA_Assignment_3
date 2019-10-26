@@ -62,9 +62,16 @@ public class Utilities extends HttpServlet{
 									+ "<a href='DataAnalytics'><span class='glyphicon'>DataAnalytics</span></a>"
 									+ "<a href='DataVisualization'><span class='glyphicon'>DataVisualization</span></a>"
 									+ "</div></div></li>"
+									+ "<li><div class='dropdown'><a onclick='dropdown1()' class='dropbtn' style='font-family: Glyphicons Halflings;'>ProductsCatalog &#9662;</a><div id='myDropdown1' class='dropdown-content'>"
+									+ "<a href='ProductModify?button=Addproduct' style='font-family: Glyphicons Halflings;'>AddProduct</a>"
+									+ "<a href='ProductModify?button=Updateproduct' style='font-family: Glyphicons Halflings;'>UpdateProduct</a>"
+									+ "<a href='ProductModify?button=Deleteproduct'><span class='glyphicon'>DeleteProduct</span></a>"
+									+ "</div></div></li>";
+									/*
 									+ "<li><a href='ProductModify?button=Addproduct'><span class='glyphicon'>AddProduct</span></a></li>"
 									+ "<li><a href='ProductModify?button=Updateproduct'><span class='glyphicon'>UpdateProduct</span></a></li>"
-									+ "<li><a href='ProductModify?button=Deleteproduct'><span class='glyphicon'>DeleteProduct</span></a></li>";
+									+ "<li><a href='ProductModify?button=Deleteproduct'><span class='glyphicon'>DeleteProduct</span></a></li>"
+									*/
 				}
 				else if(usertype.equalsIgnoreCase("salesman"))
 				{

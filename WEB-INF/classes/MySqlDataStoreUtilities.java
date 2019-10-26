@@ -59,6 +59,14 @@ public class MySqlDataStoreUtilities
             pst.setString(8,deliveryDate);
             pst.setString(9,maxOrderCancellationDate);
             pst.execute();
+
+            String procedureCall = "{CALL SP_UpdateProductCatalogCount(?)}";
+            System.out.println("procedureCall: " + procedureCall);
+            System.out.println("productName: " + orderName);
+            CallableStatement cs = conn.prepareCall(procedureCall);
+            cs.setString(1, orderName);
+            //cs.execute();
+            cs.executeUpdate();
         }
         catch(Exception e)
         {
@@ -155,7 +163,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectWirelessPlan="select * from  Productdetails where ProductType=?";
+            String selectWirelessPlan="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectWirelessPlan);
             pst.setString(1,"wirelessPlan");
             ResultSet rs = pst.executeQuery();
@@ -206,7 +214,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectTelevision="select * from  Productdetails where ProductType=?";
+            String selectTelevision="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectTelevision);
             pst.setString(1,"television");
             ResultSet rs = pst.executeQuery();
@@ -232,7 +240,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectFitnessWatch="select * from  Productdetails where ProductType=?";
+            String selectFitnessWatch="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectFitnessWatch);
             pst.setString(1,"fitnessWatch");
             ResultSet rs = pst.executeQuery();
@@ -258,7 +266,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectHeadphone="select * from  Productdetails where ProductType=?";
+            String selectHeadphone="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectHeadphone);
             pst.setString(1,"headphone");
             ResultSet rs = pst.executeQuery();
@@ -284,7 +292,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectLaptop="select * from  Productdetails where ProductType=?";
+            String selectLaptop="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectLaptop);
             pst.setString(1,"laptop");
             ResultSet rs = pst.executeQuery();
@@ -310,7 +318,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectPhone="select * from  Productdetails where ProductType=?";
+            String selectPhone="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectPhone);
             pst.setString(1,"phone");
             ResultSet rs = pst.executeQuery();
@@ -336,7 +344,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectSmartWatch="select * from  Productdetails where ProductType=?";
+            String selectSmartWatch="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectSmartWatch);
             pst.setString(1,"smartWatch");
             ResultSet rs = pst.executeQuery();
@@ -362,7 +370,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectSoundSystem="select * from  Productdetails where ProductType=?";
+            String selectSoundSystem="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectSoundSystem);
             pst.setString(1,"soundSystem");
             ResultSet rs = pst.executeQuery();
@@ -388,7 +396,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectTablet="select * from  Productdetails where ProductType=?";
+            String selectTablet="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectTablet);
             pst.setString(1,"tablet");
             ResultSet rs = pst.executeQuery();
@@ -414,7 +422,7 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String selectVoiceAssistant="select * from  Productdetails where ProductType=?";
+            String selectVoiceAssistant="select * from  Productdetails where ProductType=? and numberOfAvailableProducts > 0";
             PreparedStatement pst = conn.prepareStatement(selectVoiceAssistant);
             pst.setString(1,"voiceAssistant");
             ResultSet rs = pst.executeQuery();
