@@ -144,7 +144,7 @@ hr {
 /* Page Display Decoration*/
 
 #page {
-	width: 1000px;
+	width: 97%; /* 1000px */
 	margin: 0 auto;
 	padding: 20px 20px 0px 20px;
 }
@@ -153,12 +153,12 @@ hr {
 
 #content {
 	float: right;
-	width: 750px;
+	width: 83%; /* 750px */
 }
 
 /* Products Display on the Main Content Screen */
 .post {
-	width: 750px;
+	width: 100%; /* 750px */
 	margin-bottom: 20px;
 	padding: 20px 0px;
 	background: #EEE;
@@ -526,6 +526,11 @@ table.gridtable {
 	border-collapse: collapse;
 }
 
+.gridtableFull
+{
+	width: 100%;
+}
+
 /* Decoration for Cart Details with Table Head Tags */
 
 table.gridtable th {
@@ -545,8 +550,7 @@ table.gridtable td {
 	border-color: #666666;
 	background-color: #ffffff;
 }
-/* style for prev annd next button of carousel */
-
+/* style for prev annd next button of carousel
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -560,6 +564,7 @@ table.gridtable td {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
 }
+*/
 
 
 

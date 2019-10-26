@@ -53,7 +53,7 @@ public class Account extends HttpServlet {
 			pw.print("<tr>");
 			pw.print("<td> User Type: </td>");
 			pw.print("<td>" +user.getUsertype()+ "</td>");
-			pw.print("</tr>");
+			pw.print("</tr></table><table class='gridtable gridtableFull gridDataTable' id='ordersInAccount'>");
 			HashMap<Integer, ArrayList<OrderPayment>> orderPayments = new HashMap<Integer, ArrayList<OrderPayment>>();
 			//String TOMCAT_HOME = System.getProperty("catalina.home");
 			try
@@ -80,11 +80,11 @@ public class Account extends HttpServlet {
 			if(size>0)
 				{	
 					
-					pw.print("<tr><td></td>");
+					pw.print("<thead><tr><td></td>");
 					pw.print("<td>OrderId:</td>");
 					pw.print("<td>UserName:</td>");
 					pw.print("<td>productOrdered:</td>");
-					pw.print("<td>productPrice:</td></tr>");
+					pw.print("<td>productPrice:</td><td></td><td></td></tr></thead><tbody>");
 					for(Map.Entry<Integer, ArrayList<OrderPayment>> entry : orderPayments.entrySet())
 					{
 						for(OrderPayment oi:entry.getValue())	
@@ -102,7 +102,7 @@ public class Account extends HttpServlet {
 					
 					}
 					
-					pw.print("</table>");
+					pw.print("</tbody></table>");
 				}
 				else
 				{

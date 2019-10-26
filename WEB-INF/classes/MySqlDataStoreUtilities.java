@@ -532,4 +532,30 @@ public class MySqlDataStoreUtilities
         }
         return msg;
     }
+
+    public static ArrayList<NoOfAvailableProducts> availableProductsList()
+    {
+        ArrayList<NoOfAvailableProducts> availableProductsList = new ArrayList<NoOfAvailableProducts>();
+
+        try 
+        {
+            getConnection();
+            
+            String availableProductsListQuery="SELECT productName, productPrice, numberOfAvailableProducts FROM productdetails;";
+            PreparedStatement pst = conn.prepareStatement(availableProductsListQuery);
+            ResultSet rs = pst.executeQuery();
+        
+            while(rs.next())
+            {	
+                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("numberOfAvailableProducts"));
+                availableProductsList.add(product);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("availableProductsList(): "+e);
+        }
+
+        return availableProductsList;
+    }
 }	
