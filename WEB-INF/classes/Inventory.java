@@ -59,6 +59,56 @@ public class Inventory extends HttpServlet
             }
 
             pw.print("</tbody></table>");
+            /********************************************/
+            
+            pw.print("<h4>Products currently on sale</h4>");
+            pw.print("<table class='gridtable gridtableFull gridDataTable' id='tblInventoryProductsCurrentlyOnSale'>");
+            pw.print("<thead><tr><td>Sr No</td>");
+            pw.print("<td>Product Name</td>");
+            pw.print("<td>Product Price</td>");
+            pw.print("<td>Product Discount</td>");
+            pw.print("<td>Number of Products (available in store)</td>");
+            pw.print("</tr></thead><tbody>");
+
+            //HashMap<String, ArrayList<NoOfAvailableProducts>> availableProductsList = new HashMap<String, ArrayList<NoOfAvailableProducts>>();
+            ArrayList <NoOfAvailableProducts> currentOnSaleProductsList = new ArrayList <NoOfAvailableProducts> ();
+            currentOnSaleProductsList = MySqlDataStoreUtilities.currentOnSaleProductsList();
+            i = 1;
+            for(NoOfAvailableProducts product : currentOnSaleProductsList)
+            {
+                pw.print("<tr>");
+                pw.print("<td>"+i+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td><td>"+product.getProductDiscount()+"</td><td>"+product.getNumberOfAvailableProducts()+"</td></tr>");
+                i++;
+            }
+
+            pw.print("</tbody></table>");
+            /********************************************/
+            
+            pw.print("<h4>Products currently that have manufacturer rebates</h4>");
+            /*
+            pw.print("<table class='gridtable gridtableFull gridDataTable' id='tblInventoryProductsHavingManufacturerRebates'>");
+            pw.print("<thead><tr><td>Sr No</td>");
+            pw.print("<td>Product Name</td>");
+            pw.print("<td>Product Price</td>");
+            pw.print("<td>Product Discount</td>");
+            pw.print("<td>Number of Products (available in store)</td>");
+            pw.print("</tr></thead><tbody>");
+
+            //HashMap<String, ArrayList<NoOfAvailableProducts>> availableProductsList = new HashMap<String, ArrayList<NoOfAvailableProducts>>();
+            ArrayList <NoOfAvailableProducts> currentOnSaleProductsList = new ArrayList <NoOfAvailableProducts> ();
+            currentOnSaleProductsList = MySqlDataStoreUtilities.currentOnSaleProductsList();
+            i = 1;
+            for(NoOfAvailableProducts product : currentOnSaleProductsList)
+            {
+                pw.print("<tr>");
+                pw.print("<td>"+i+"</td><td>"+product.getProductName()+"</td><td>"+product.getProductPrice()+"</td><td>"+product.getProductDiscount()+"</td><td>"+product.getNumberOfAvailableProducts()+"</td></tr>");
+                i++;
+            }
+
+            pw.print("</tbody></table>");
+            */
+
+            
             /*
             pw.print("<table class='gridtable gridtableFull gridDataTable' id='tblInventoryNoOfProducts2'>");
             pw.print("<thead><tr><td>Sr No</td>");
