@@ -58,7 +58,7 @@ public class Utilities extends HttpServlet{
 					//result = result + "<li><a href='ProductCatalog'><span class='glyphicon'>ProductCatalog</span></a></li>";
 					result = result + "<li><div class='dropdown'><a onclick='dropdown()' class='dropbtn' style='font-family: Glyphicons Halflings;'>Reports &#9662;</a><div id='myDropdown' class='dropdown-content'>"
 									+ "<a href='Inventory' style='font-family: Glyphicons Halflings;'>Inventory</a>"
-									+ "<a href='#about' style='font-family: Glyphicons Halflings;'>Sales Report</a>"
+									+ "<a href='SalesReport' style='font-family: Glyphicons Halflings;'>Sales Report</a>"
 									+ "<a href='DataAnalytics'><span class='glyphicon'>DataAnalytics</span></a>"
 									+ "<a href='DataVisualization'><span class='glyphicon'>DataVisualization</span></a>"
 									+ "</div></div></li>"
