@@ -66,6 +66,7 @@ public class SalesReport extends HttpServlet
             pw.print("<table class='gridtable gridtableFull gridDataTable' id='tblSalesReportTotalDailySales'>");
             pw.print("<thead><tr><td>Sr No</td>");
             pw.print("<td>Date</td>");
+            pw.print("<td>Product and Price List</td>");
             pw.print("<td>Total Sales</td>");
             pw.print("</tr></thead><tbody>");
 
@@ -76,7 +77,7 @@ public class SalesReport extends HttpServlet
             for(TotalSalesDaily order : totalSalesDailyOrdersList)
             {
                 pw.print("<tr>");
-                pw.print("<td>"+i+"</td><td>"+order.getOrderDate()+"</td><td>"+order.getTotalDailySales()+"</td></tr>");
+                pw.print("<td>"+i+"</td><td>"+order.getOrderDate()+"</td><td>"+order.getProductsListDesciption()+"</td><td>"+order.getTotalDailySales()+"</td></tr>");
                 i++;
             }
 
