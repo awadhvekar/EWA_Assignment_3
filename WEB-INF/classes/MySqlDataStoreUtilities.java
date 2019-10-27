@@ -619,13 +619,13 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String totalSalesDailyOrdersListQuery="SELECT orderDate, SUM(orderPrice) AS totalDailySales FROM customerorders GROUP BY orderDate;;";
+            String totalSalesDailyOrdersListQuery="SELECT orderDate, SUM(orderPrice) AS totalDailySales, GROUP_CONCAT(CONCAT(orderName, ' (', orderPrice, ')')) AS productsListDesciption FROM customerorders GROUP BY orderDate;";
             PreparedStatement pst = conn.prepareStatement(totalSalesDailyOrdersListQuery);
             ResultSet rs = pst.executeQuery();
         
             while(rs.next())
             {	
-                TotalSalesDaily order = new TotalSalesDaily(rs.getString("orderDate"),rs.getString("totalDailySales"));
+                TotalSalesDaily order = new TotalSalesDaily(rs.getString("orderDate"),rs.getString("totalDailySales"), rs.getString("productsListDesciption"));
                 totalSalesDailyOrdersList.add(order);
             }
         }
