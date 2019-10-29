@@ -23,7 +23,15 @@ $("#btnGetChartData").click(function () {
 
 //This method will parse json data and build datatable required by google api to plot the bar chart.
 function createDataTable(jsonData) {
+    //alert(jsonData);
+    /*
+    [{"productName":"samsung_phone","reviewRating":"2","retailerpin":"60616"},{"productName":"premium","reviewRating":"1","retailerpin":"60616"},{"productName":"samsung_smart_watch","reviewRating":"1","retailerpin":"60616"},{"productName":"samsung_headphone","reviewRating":"1","retailerpin":"12345"},{"productName":"samsung_sound_system","reviewRating":"1","retailerpin":"92688"},{"productName":"sony_tv","reviewRating":"1","retailerpin":"92688"},{"productName":"microsoft_tv","reviewRating":"1","retailerpin":"92456"}]
+    */
     var parsedData = $.parseJSON(jsonData);
+    //alert(parsedData);
+    /*
+    [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object]
+    */
     var data = new Array();
     var productNameArr = new Array();
     var zipCodeArr = new Array();
@@ -41,6 +49,12 @@ function createDataTable(jsonData) {
         }
      }
 
+    //alert("productNameArr: " + productNameArr + " \nzipCodeArr: " + zipCodeArr);
+     /*
+    productNameArr: samsung_phone,premium,samsung_smart_watch,samsung_headphone,samsung_sound_system,sony_tv,microsoft_tv 
+    zipCodeArr: 60616,12345,92688,92456
+    */
+
      //Create header array for google api
      var headingArray = new Array(productNameArr.length+1);
      headingArray[0] = "Zip Code";
@@ -50,6 +64,9 @@ function createDataTable(jsonData) {
         headingArray[i] = productNameArr[j]; 
         j++;
      }
+
+    //alert("headingArray: " + headingArray);
+    //headingArray: Zip Code,samsung_phone,premium,samsung_smart_watch,samsung_headphone,samsung_sound_system,sony_tv,microsoft_tv
 
      data[0] = headingArray;
      var m =1;
@@ -77,12 +94,14 @@ function createDataTable(jsonData) {
         m++;
         
      }
-     drawChart(data, productNameArr);
+    //alert(data);
+    //Zip Code,samsung_phone,premium,samsung_smart_watch,samsung_headphone,samsung_sound_system,sony_tv,microsoft_tv,60616,2,1,1,0,0,0,0,12345,0,0,0,1,0,0,0,92688,0,0,0,0,1,1,0,92456,0,0,0,0,0,0,1
+    drawChart(data, productNameArr);
 }
 
 //Plot the chart using 2d array and product names as subtitles;
 function drawChart(data, productNameArr) {
-    alert(typeof(data));
+    //alert(typeof(data));
     var productNames = "";
     for(var i=0; i<productNameArr.length; i++) {
         productNames += productNameArr[i] + ",";
