@@ -60,6 +60,10 @@ public class SalesReport extends HttpServlet
             }
 
             pw.print("</tbody></table>");
+            /***************** Bar chart ***************************/
+            pw.print("<h4>Total Products sold and Sales (Graphical Representation) </h4>");
+            //pw.print("<h3><button id='btnGetChartData'>View Chart</h3>");
+            pw.println("<div id='chartDivTotalProductSales'></div>");
             /********************************************/
             
             pw.print("<h4>Total Daily Sales</h4>");
@@ -85,6 +89,8 @@ public class SalesReport extends HttpServlet
             /********************************************/
             
             pw.print("</div></div></div>"); //</h2></div></div></div>
+            pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");
+            pw.println("<script type='text/javascript' src='salesReport.js'></script>");
             utility.printHtml("Footer.html");
         }
         catch(Exception e)

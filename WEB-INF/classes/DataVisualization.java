@@ -39,7 +39,7 @@ public class DataVisualization extends HttpServlet {
         pw.print("<h2 class='title meta'><a style='font-size: 24px;'>Data Visualization</a></h2>"
                 + "<div class='entry'>");
             
-        pw.print("<h3><button id='btnGetChartData'>View Chart</h3>");
+        //pw.print("<h3><button id='btnGetChartData'>View Chart</h3>");
         pw.println("<div id='chart_div'></div>");
         pw.println("</div></div></div>");
         pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");

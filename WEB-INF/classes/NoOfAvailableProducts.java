@@ -7,13 +7,15 @@ public class NoOfAvailableProducts implements Serializable
     private String productPrice;
     private String numberOfAvailableProducts;
     private String productDiscount;
+    private String manufacturerRebate;
 
-    public NoOfAvailableProducts(String productName, String productPrice, String productDiscount, String numberOfAvailableProducts)
+    public NoOfAvailableProducts(String productName, String productPrice, String productDiscount, String numberOfAvailableProducts, String manufacturerRebate)
     {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDiscount = productDiscount;
         this.numberOfAvailableProducts = numberOfAvailableProducts;
+        this.manufacturerRebate = manufacturerRebate;
     }
 
     public String getProductName()
@@ -54,5 +56,15 @@ public class NoOfAvailableProducts implements Serializable
     public void setProductDiscount(String productDiscount)
     {
 		this.productDiscount = productDiscount;
+    }
+
+    public String getManufacturerRebate()
+    {
+		return manufacturerRebate;
+    }
+
+    public void setManufacturerRebate(String manufacturerRebate)
+    {
+		this.manufacturerRebate = manufacturerRebate;
     }
 }

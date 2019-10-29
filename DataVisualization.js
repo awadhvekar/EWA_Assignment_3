@@ -3,8 +3,10 @@ google.charts.load('current', {packages: ['corechart', 'bar']});
 
 //Bind click event to make an ajax call to post request of DataVisualization. This will return
 // a json object with top 3 review for each city;
+/*
 $("#btnGetChartData").click(function () {
      $("#btnGetChartData").hide();
+*/
     $.ajax({
         url: "DataVisualization",
         type: "POST",
@@ -16,7 +18,7 @@ $("#btnGetChartData").click(function () {
             console.log("error occurred while making ajax call;")
         }
     });    
-});
+//});
 
 
 //This method will parse json data and build datatable required by google api to plot the bar chart.
@@ -80,6 +82,7 @@ function createDataTable(jsonData) {
 
 //Plot the chart using 2d array and product names as subtitles;
 function drawChart(data, productNameArr) {
+    alert(typeof(data));
     var productNames = "";
     for(var i=0; i<productNameArr.length; i++) {
         productNames += productNameArr[i] + ",";
@@ -88,6 +91,15 @@ function drawChart(data, productNameArr) {
 
     //Invoke google's built in method to get data table object required by google.
      var chartData = google.visualization.arrayToDataTable(data);
+     /*
+    [
+        ['Product Name', 'Number of available products'],
+        ['2014', 10],
+        ['2015', 12],
+        ['2016', 7],
+        ['2017', 15]
+    ]
+     */
 
      var options = {
         'width':600,
@@ -99,7 +111,7 @@ function drawChart(data, productNameArr) {
           bars: 'horizontal' // Required for Material Bar Charts.
         };
 
-    var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+    var chart = new google.visualization.BarChart(document.getElementById('chart_div')); //chartDivNumberOfAvailableProducts chart_div
     chart.draw(chartData, options);
 }
 
