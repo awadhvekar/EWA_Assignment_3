@@ -541,13 +541,13 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String availableProductsListQuery="SELECT productName, productPrice, productDiscount, numberOfAvailableProducts FROM productdetails;";
+            String availableProductsListQuery="SELECT productName, productPrice, productDiscount, numberOfAvailableProducts, manufacturerRebate FROM productdetails;";
             PreparedStatement pst = conn.prepareStatement(availableProductsListQuery);
             ResultSet rs = pst.executeQuery();
         
             while(rs.next())
             {	
-                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("productPrice"),rs.getString("numberOfAvailableProducts"));
+                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("productPrice"),rs.getString("numberOfAvailableProducts"),rs.getString("manufacturerRebate"));
                 availableProductsList.add(product);
             }
         }
@@ -567,13 +567,13 @@ public class MySqlDataStoreUtilities
         {
             getConnection();
             
-            String currentOnSaleProductsListQuery="SELECT productName, productPrice, productDiscount, numberOfAvailableProducts FROM productdetails WHERE productDiscount > 0;";
+            String currentOnSaleProductsListQuery="SELECT productName, productPrice, productDiscount, numberOfAvailableProducts, manufacturerRebate FROM productdetails WHERE productDiscount > 0;";
             PreparedStatement pst = conn.prepareStatement(currentOnSaleProductsListQuery);
             ResultSet rs = pst.executeQuery();
         
             while(rs.next())
             {	
-                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("productDiscount") ,rs.getString("numberOfAvailableProducts"));
+                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("productDiscount") ,rs.getString("numberOfAvailableProducts"),rs.getString("manufacturerRebate"));
                 currentOnSaleProductsList.add(product);
             }
         }
@@ -583,6 +583,33 @@ public class MySqlDataStoreUtilities
         }
 
         return currentOnSaleProductsList;
+    }
+
+    //manufacturerRebateProductsList
+    public static ArrayList<NoOfAvailableProducts> manufacturerRebateProductsList()
+    {
+        ArrayList<NoOfAvailableProducts> manufacturerRebateProductsList = new ArrayList<NoOfAvailableProducts>();
+        
+        try 
+        {
+            getConnection();
+            
+            String manufacturerRebateProductsListQuery="SELECT productName, productPrice, productDiscount,numberOfAvailableProducts, manufacturerRebate FROM productdetails WHERE manufacturerRebate > 0;";
+            PreparedStatement pst = conn.prepareStatement(manufacturerRebateProductsListQuery);
+            ResultSet rs = pst.executeQuery();
+        
+            while(rs.next())
+            {	
+                NoOfAvailableProducts product = new NoOfAvailableProducts(rs.getString("productName"),rs.getString("productPrice"),rs.getString("productDiscount") ,rs.getString("numberOfAvailableProducts") ,rs.getString("manufacturerRebate"));
+                manufacturerRebateProductsList.add(product);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("manufacturerRebateProductsList(): "+e);
+        }
+
+        return manufacturerRebateProductsList;
     }
 
     public static ArrayList<NoOfProductsSold> totalSoldProductsList()
